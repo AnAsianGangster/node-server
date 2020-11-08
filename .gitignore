@@ -1,0 +1,8 @@
+# local modules
+/node_modules
+
+# config
+/app/config
+
+# yarn
+yarn.lock
