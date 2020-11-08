@@ -38,13 +38,11 @@ API
 ```
 http://localhost:5000/api/reviews
 ```
-<br>
-`POST /`  new review
-<br>
-`GET /?reviewId`  get review with id
-<br>
-`POST /comments`  new comment
-<br>
-`GET /comments`  get all comments
-<br>
-`GET /comments/?id`  get comment with id
+
+| Request   | Location       | Description         |
+| --------- |:--------------:| -------------------:|
+| `POST`    | /              | new review          |
+| `GET`     | /?reviewId     | get review with id  |
+| `POST`    | /comments      | new comment         |
+| `GET`     | /comments      | get all comments    |
+| `GET`     | /comments/?id  | get comment with id |
