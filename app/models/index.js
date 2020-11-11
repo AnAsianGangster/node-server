@@ -19,13 +19,13 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.books = require('./book.model.js')(sequelize, Sequelize);
 db.reviews = require('./review.model.js')(sequelize, Sequelize);
-db.comments = require('./comment.model.js')(sequelize, Sequelize);
 
-db.reviews.hasMany(db.comments, { as: 'comments' });
-db.comments.belongsTo(db.reviews, {
-    foreignKey: 'reviewId',
-    as: 'review',
+db.books.hasMany(db.reviews, { as: 'reviews' });
+db.reviews.belongsTo(db.books, {
+    foreignKey: 'bookId',
+    as: 'book',
 });
 
 module.exports = db;

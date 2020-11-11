@@ -8,6 +8,8 @@ var corsOptions = {
     origin: 'http://localhost:5001',
 };
 
+app.use(cors(corsOptions));
+
 const db = require('./app/models');
 db.sequelize.sync();
 /*
@@ -15,9 +17,7 @@ db.sequelize.sync();
 db.sequelize.sync({ force: true }).then(() => {
     console.log('Drop and re-sync db.');
 });
-  */
-
-app.use(cors(corsOptions));
+*/
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -29,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to root url.' });
 });
+
+// routes
+require('./app/routes/index.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5000;
