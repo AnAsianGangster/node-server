@@ -1,70 +1,60 @@
-const db = require('../models');
+const db = require('../models/index');
 const Review = db.reviews;
-const Comment = db.comments;
 
 // create a new review
-exports.createReview = (review) => {
-    return Review.create({
-        productId: review.productId,
-        title: review.title,
-        price: review.price,
-        brand: review.brand,
-        imgUrl: review.imgUrl,
-        description: review.description,
-    })
-        .then((review) => {
-            console.log('>> Created review: ' + JSON.stringify(review, null, 4));
-            return review;
+exports.createReview = (req, res) => {
+    // Validate request
+    if (!req.body.userId) {
+        res.status(400).send({
+            message: 'Content can not be empty!',
+        });
+        return;
+    }
+
+    // Create a review
+    const review = {
+        userId: req.body.userId,
+        name: req.body.name,
+        text: req.body.text,
+        bookId: req.body.bookId,
+    };
+
+    // Save book in the database
+    Review.create(review)
+        .then((data) => {
+            res.send(data);
         })
         .catch((err) => {
-            console.log('>> Error while creating review: ', err);
+            res.status(500).send({
+                message: err.message || 'Some error occurred while creating the book.',
+            });
         });
 };
 
-// create new comments
-exports.createComment = (reviewId, comment) => {
-    return Comment.create({
-        userId: comment.userId,
-        name: comment.name,
-        text: comment.text,
-        reviewId: reviewId,
-    })
-        .then((comment) => {
-            console.log('>> Created comment: ' + JSON.stringify(comment, null, 4));
-            return comment;
+// get review for review id
+exports.findReviewById = (req, res) => {
+    const id = req.params.id;
+
+    Review.findByPk(id, { include: ['book'] })
+        .then((data) => {
+            res.send(data);
         })
         .catch((err) => {
-            console.log('>> Error while creating comment: ', err);
+            res.status(500).send({
+                message: err.message || 'Some error occurred while creating the book.',
+            });
         });
 };
 
-// get comments for a given review
-exports.findReviewById = (reviewId) => {
-    return Review.findByPk(reviewId, { include: ['comments'] })
-        .then((review) => {
-            return review;
+// all reviews
+exports.findAllReviews = (req, res) => {
+    Review.findAll()
+        .then((data) => {
+            res.send(data);
         })
         .catch((err) => {
-            console.log('>> Error while finding review: ', err);
+            res.status(500).send({
+                message: err.message || 'Some error occurred while finding all reviews',
+            });
         });
-};
-
-// get comment for comment id
-exports.findCommentById = (id) => {
-    return Comment.findByPk(id, { include: ['review'] })
-        .then((comment) => {
-            return comment;
-        })
-        .catch((err) => {
-            console.log('>> Error while finding comment: ', err);
-        });
-};
-
-// all review with comments
-exports.findAll = () => {
-    return Review.findAll({
-        include: ['comments'],
-    }).then((reviews) => {
-        return reviews;
-    });
 };

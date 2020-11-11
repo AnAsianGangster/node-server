@@ -1,21 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
     const Review = sequelize.define('review', {
-        productId: {
+        userId: {
             type: DataTypes.INTEGER,
         },
-        title: {
+        name: {
             type: DataTypes.STRING,
         },
-        price: {
-            type: DataTypes.FLOAT,
-        },
-        brand: {
-            type: DataTypes.STRING,
-        },
-        imgUrl: {
-            type: DataTypes.STRING,
-        },
-        description: {
+        text: {
             type: DataTypes.STRING,
         },
     });
