@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         reviewerID: {
             type: DataTypes.STRING,
         },
+        reviewerName: {
+            type: DataTypes.STRING,
+        },
         summary: {
             type: DataTypes.STRING,
         },

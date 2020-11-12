@@ -36,13 +36,14 @@ http://localhost:5000
 ```
 API
 ```
-http://localhost:5000/api/reviews
+http://localhost:5000/api
 ```
 
-| Request   | Location       | Description         |
-| --------- |:--------------:| -------------------:|
-| `POST`    | /              | new review          |
-| `GET`     | /?reviewId     | get review with id  |
-| `POST`    | /comments      | new comment         |
-| `GET`     | /comments      | get all comments    |
-| `GET`     | /comments/?id  | get comment with id |
+| Request   | Location       | Description                |
+| --------- |:--------------:| --------------------------:|
+| `POST`    | /reviews       | new review                 |
+| `GET`     | /reviews       | get all reviews            |
+| `GET`     | /reviews/`id`  | get review with id         |
+| `POST`    | /books         | new book                   |
+| `GET`     | /books/        | get all books with reviews |
+| `GET`     | /books/`asin`  | get book with id           |
