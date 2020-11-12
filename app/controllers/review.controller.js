@@ -4,9 +4,9 @@ const Review = db.reviews;
 // create a new review
 exports.createReview = (req, res) => {
     // Validate request
-    if (!req.body.userId) {
+    if (!req.body.asin) {
         res.status(400).send({
-            message: 'Content can not be empty!',
+            message: 'asin can not be empty!',
         });
         return;
     }

@@ -22,7 +22,12 @@ db.sequelize = sequelize;
 db.books = require('./book.model.js')(sequelize, Sequelize);
 db.reviews = require('./review.model.js')(sequelize, Sequelize);
 
-db.books.hasMany(db.reviews, { as: 'reviews' });
+// associations
+db.books.hasMany(db.reviews, {
+    foreignKey: 'asin',
+    as: 'reviews',
+});
+
 db.reviews.belongsTo(db.books, {
     foreignKey: 'asin',
     as: 'book',

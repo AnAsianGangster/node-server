@@ -1,0 +1,51 @@
+Post http://localhost:5000/api/books
+Content-Type: application/json
+
+{
+    "asin": "someID",
+    "title": "some book title",
+    "price": 12.80,
+    "brand": "some brand",
+    "imgUrl": "http://dummy.com",
+    "description": "some description"
+}
+
+###
+GET http://localhost:5000/api/books
+
+###
+GET http://localhost:5000/api/books/someID
+
+###
+POST http://localhost:5000/api/reviews
+Content-Type: application/json
+
+{
+    "asin": "someID",
+    "helpful": 4.0,
+    "overall": 4.0,
+    "reviewText": "some review text",
+    "reviewerID": "some reviewer id",
+    "reviewerName": "some reviewer name",
+    "summary": "some summary"
+}
+
+###
+POST http://localhost:5000/api/reviews
+Content-Type: application/json
+
+{
+    "asin": "someID",
+    "helpful": 5.0,
+    "overall": 5.0,
+    "reviewText": "some review text number 2",
+    "reviewerID": "some reviewer id number 2",
+    "reviewerName": "some reviewer name number 2",
+    "summary": "some summary number 2"
+}
+
+###
+GET http://localhost:5000/api/reviews
+
+###
+GET http://localhost:5000/api/reviews/1
