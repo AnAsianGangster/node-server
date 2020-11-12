@@ -8,5 +8,5 @@ module.exports = (router) => {
     router.get('/books', books.findAllBooks);
     
     // Retrieve a single book with id
-    router.get('/books/:bookId', books.findBookById);
+    router.get('/books/:asin', books.findBookById);
 };

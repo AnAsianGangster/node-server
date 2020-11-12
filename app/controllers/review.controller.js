@@ -13,10 +13,13 @@ exports.createReview = (req, res) => {
 
     // Create a review
     const review = {
-        userId: req.body.userId,
-        name: req.body.name,
-        text: req.body.text,
-        bookId: req.body.bookId,
+        asin: req.body.asin,
+        helpful: req.body.helpful,
+        overall: req.body.overall,
+        reviewText: req.body.reviewText,
+        reviewerID: req.body.reviewerID,
+        reviewerName: req.body.reviewerName,
+        summary: req.body.summary,
     };
 
     // Save book in the database

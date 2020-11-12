@@ -1,12 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
     const Review = sequelize.define('review', {
-        userId: {
-            type: DataTypes.INTEGER,
+        asin: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'books',
+                key: 'asin',
+            },
         },
-        name: {
+        helpful: {
+            type: DataTypes.FLOAT,
+        },
+        overall: {
+            type: DataTypes.FLOAT,
+        },
+        reviewText: {
             type: DataTypes.STRING,
         },
-        text: {
+        reviewerID: {
+            type: DataTypes.STRING,
+        },
+        summary: {
             type: DataTypes.STRING,
         },
     });
