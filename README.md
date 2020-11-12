@@ -27,7 +27,7 @@ module.exports = {
     },
 };
 ```
->Note: need to create a DB with with the same name first (can be empty)
+>Note: Need to create a DB with with the same name first (can be empty)
 
 ## Usage
 root
@@ -39,6 +39,8 @@ API
 http://localhost:5000/api
 ```
 
+>Note: There are some sample API calls in [resquests.rest](https://github.com/AnAsianGangster/node-server/blob/master/requests.rest)
+
 | Request   | Location       | Description                |
 | --------- |:--------------:| --------------------------:|
 | `POST`    | /reviews       | new review                 |
@@ -47,3 +49,9 @@ http://localhost:5000/api
 | `POST`    | /books         | new book                   |
 | `GET`     | /books/        | get all books with reviews |
 | `GET`     | /books/`asin`  | get book with id           |
+| `POST`    | /auth/signup   | new user                   |
+| `POST`    | /auth/signin   | authenticate user          |
+| `GET`     | /all           | public content             |
+| `GET`     | /user          | user content               |
+| `GET`     | /mod           | moderator content          |
+| `GET`     | /admin         | admin content              |
