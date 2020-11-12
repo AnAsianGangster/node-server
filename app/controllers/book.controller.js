@@ -4,7 +4,7 @@ const Book = db.books;
 // create a new book
 exports.createBook = (req, res) => {
     // Validate request
-    if (!req.body.productId) {
+    if (!req.body.asin) {
         res.status(400).send({
             message: 'Content can not be empty!',
         });
@@ -13,7 +13,7 @@ exports.createBook = (req, res) => {
 
     // Create a book
     const book = {
-        productId: req.body.productId,
+        asin: req.body.asin,
         title: req.body.title,
         price: req.body.price,
         brand: req.body.brand,
@@ -48,9 +48,9 @@ exports.findAllBooks = (req, res) => {
 
 // get reviews for a given book
 exports.findBookById = (req, res) => {
-    const bookId = req.params.bookId;
+    const asin = req.params.asin;
 
-    Book.findByPk(bookId, { include: ['reviews'] })
+    Book.findByPk(asin, { include: ['reviews'] })
         .then((data) => {
             res.send(data);
         })

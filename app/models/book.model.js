@@ -1,7 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
     const Book = sequelize.define('book', {
-        productId: {
-            type: DataTypes.INTEGER,
+        asin: {
+            type: DataTypes.STRING,
+            primaryKey: true,
         },
         title: {
             type: DataTypes.STRING,

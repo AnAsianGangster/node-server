@@ -24,7 +24,7 @@ db.reviews = require('./review.model.js')(sequelize, Sequelize);
 
 db.books.hasMany(db.reviews, { as: 'reviews' });
 db.reviews.belongsTo(db.books, {
-    foreignKey: 'bookId',
+    foreignKey: 'asin',
     as: 'book',
 });
 
