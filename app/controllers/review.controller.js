@@ -38,7 +38,7 @@ exports.createReview = (req, res) => {
 exports.findReviewById = (req, res) => {
     const id = req.params.id;
 
-    Review.findByPk(id, { include: ['book'] })
+    Review.findByPk(id, { include: ['book', 'reviewer'] })
         .then((data) => {
             res.send(data);
         })

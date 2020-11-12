@@ -25,7 +25,7 @@ Content-Type: application/json
     "helpful": 4.0,
     "overall": 4.0,
     "reviewText": "some review text",
-    "reviewerID": "some reviewer id",
+    "reviewerID": 1,
     "reviewerName": "some reviewer name",
     "summary": "some summary"
 }
@@ -39,7 +39,7 @@ Content-Type: application/json
     "helpful": 5.0,
     "overall": 5.0,
     "reviewText": "some review text number 2",
-    "reviewerID": "some reviewer id number 2",
+    "reviewerID": 2,
     "reviewerName": "some reviewer name number 2",
     "summary": "some summary number 2"
 }
@@ -49,3 +49,35 @@ GET http://localhost:5000/api/reviews
 
 ###
 GET http://localhost:5000/api/reviews/1
+
+###
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "some-user-name-1",
+    "email": "someEmail1@somemail.com",
+    "password": "some-password",
+    "roles": ["user"]
+}
+
+###
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "username": "some-user-name-2",
+    "email": "someEmail2@somemail.com",
+    "password": "some-password",
+    "roles": ["user"]
+}
+
+###
+POST http://localhost:5000/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "some-user-name-1",
+    "password": "some-password"
+}
+
