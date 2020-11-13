@@ -60,17 +60,20 @@ http://localhost:5000/api
 
 > Note: There are some sample API calls in [resquests.rest](https://github.com/AnAsianGangster/node-server/blob/master/requests.rest)
 
-| Request |   Location    |                Description |
-| ------- | :-----------: | -------------------------: |
-| `POST`  |   /reviews    |                 new review |
-| `GET`   |   /reviews    |            get all reviews |
-| `GET`   | /reviews/`id` |         get review with id |
-| `POST`  |    /books     |                   new book |
-| `GET`   |    /books/    | get all books with reviews |
-| `GET`   | /books/`asin` |           get book with id |
-| `POST`  | /auth/signup  |                   new user |
-| `POST`  | /auth/signin  |          authenticate user |
-| `GET`   |     /all      |             public content |
-| `GET`   |     /user     |               user content |
-| `GET`   |     /mod      |          moderator content |
-| `GET`   |    /admin     |              admin content |
+| Request |         Location          |                             Description |
+| ------- | :-----------------------: | --------------------------------------: |
+| `POST`  |         /reviews          |                              new review |
+| `GET`   |         /reviews          |                         get all reviews |
+| `GET`   |       /reviews/`id`       |                      get review with id |
+| `POST`  |          /books           |                                new book |
+| `GET`   |          /books/          |              get all books with reviews |
+| `GET`   |       /books/`asin`       |                        get book with id |
+| `POST`  |       /auth/signup        |                                new user |
+| `POST`  |       /auth/signin        |                       authenticate user |
+| `GET`   |   /all/`numberOfBooks`    | public content(default: 5 random books) |
+| `GET`   |           /user           |                            user content |
+| `GET`   | /userProfile/`reviewerID` |                   user with all reviews |
+| `GET`   |           /mod            |                       moderator content |
+| `GET`   |          /admin           |                           admin content |
+
+> **WARNING** :exclamation: Need at least five dummy books in database

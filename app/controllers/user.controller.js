@@ -6,6 +6,7 @@ const sequelize = require('sequelize');
 const Book = db.books;
 const User = db.user;
 
+// public content
 exports.allAccess = (req, res) => {
     const numberOfBooks = parseInt(req.params.numberOfBooks) || 5;
 
@@ -14,10 +15,12 @@ exports.allAccess = (req, res) => {
     });
 };
 
+// user content
 exports.userBoard = (req, res) => {
     res.status(200).send('User Content.');
 };
 
+// user profile
 exports.userProfile = (req, res) => {
     const token = req.headers['x-access-token'];
     const reviewerID = parseInt(req.params.reviewerID);
@@ -42,10 +45,12 @@ exports.userProfile = (req, res) => {
     });
 };
 
+// admin content
 exports.adminBoard = (req, res) => {
     res.status(200).send('Admin Content.');
 };
 
+// moderator content
 exports.moderatorBoard = (req, res) => {
     res.status(200).send('Moderator Content.');
 };
