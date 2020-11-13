@@ -7,9 +7,11 @@ module.exports = function (router) {
         next();
     });
 
-    router.get('/all', controller.allAccess);
+    router.get('/all/:numberOfBooks', controller.allAccess);
 
     router.get('/user', [authJwt.verifyToken], controller.userBoard);
+
+    router.get('/userProfile/:reviewerID', [authJwt.verifyToken], controller.userProfile);
 
     router.get('/mod', [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard);
 
