@@ -6,3 +6,6 @@
 
 # yarn
 yarn.lock
+
+# logs
+debug.log
