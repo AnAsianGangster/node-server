@@ -65,9 +65,11 @@ http://localhost:5000/api
 | `POST`  |         /reviews          |                              new review |
 | `GET`   |         /reviews          |                         get all reviews |
 | `GET`   |       /reviews/`id`       |                      get review with id |
+| `PUT`   |       /reviews/`id`       |                   update review with id |
 | `POST`  |          /books           |                                new book |
 | `GET`   |          /books/          |              get all books with reviews |
 | `GET`   |       /books/`asin`       |                        get book with id |
+| `PUT`   |       /books/`asin`       |                     update book with id |
 | `POST`  |       /auth/signup        |                                new user |
 | `POST`  |       /auth/signin        |                       authenticate user |
 | `GET`   |   /all/`numberOfBooks`    | public content(default: 5 random books) |

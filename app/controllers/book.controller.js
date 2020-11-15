@@ -28,7 +28,9 @@ exports.createBook = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || 'Some error occurred while creating the book.',
+                message:
+                    err.message ||
+                    'Some error occurred while creating the book.',
             });
         });
 };
@@ -41,7 +43,9 @@ exports.findAllBooks = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || 'Some error occurred while finding all books with reviews',
+                message:
+                    err.message ||
+                    'Some error occurred while finding all books with reviews',
             });
         });
 };
@@ -56,8 +60,34 @@ exports.findBookById = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || 'Some error occurred while finding reviews the book.',
+                message:
+                    err.message ||
+                    'Some error occurred while finding reviews the book.',
             });
         });
 };
 
+// update book by id
+exports.updateBookById = (req, res) => {
+    const asin = String(req.params.asin);
+
+    const newBook = {
+        title: req.body.title,
+        price: req.body.price,
+        brand: req.body.brand,
+        imgUrl: req.body.imgUrl,
+        description: req.body.description,
+    };
+
+    Book.update(newBook, { where: { asin: asin } })
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    'Some error occurred while updating the book.',
+            });
+        });
+};

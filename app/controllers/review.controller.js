@@ -29,7 +29,24 @@ exports.createReview = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || 'Some error occurred while creating the book.',
+                message:
+                    err.message ||
+                    'Some error occurred while creating the book.',
+            });
+        });
+};
+
+// all reviews
+exports.findAllReviews = (req, res) => {
+    Review.findAll()
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    'Some error occurred while finding all reviews',
             });
         });
 };
@@ -44,20 +61,34 @@ exports.findReviewById = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || 'Some error occurred while creating the book.',
+                message:
+                    err.message ||
+                    'Some error occurred while creating the book.',
             });
         });
 };
 
-// all reviews
-exports.findAllReviews = (req, res) => {
-    Review.findAll()
-        .then((data) => {
-            res.send(data);
+// update review for review id
+exports.updateReviewById = (req, res) => {
+    const id = req.params.id;
+
+    const newReview = {
+        helpful: req.body.helpful,
+        overall: req.body.overall,
+        reviewIext: req.body.reviewText,
+        summary: req.body.summary,
+    };
+
+    Review.update(newReview, { where: { id: id } })
+        .then((result) => {
+            res.send(result);
         })
         .catch((err) => {
-            res.status(500).send({
-                message: err.message || 'Some error occurred while finding all reviews',
-            });
+            res.status(500),
+                send({
+                    message:
+                        err.message ||
+                        'Some error occurred while updating review',
+                });
         });
 };
