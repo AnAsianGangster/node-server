@@ -9,4 +9,7 @@ module.exports = (router) => {
     
     // Retrieve a single book with id
     router.get('/books/:asin', books.findBookById);
+
+    // update a single book with id
+    router.put('/books/:asin', books.updateBookById);
 };

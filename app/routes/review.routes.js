@@ -9,4 +9,7 @@ module.exports = (router) => {
 
     // Retrieve a single review with id
     router.get('/reviews/:id', reviews.findReviewById);
+
+    // Update a single review with id
+    router.put('/reviews/:id', reviews.updateReviewById);
 };
