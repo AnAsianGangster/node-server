@@ -23,6 +23,7 @@ db.books = require('./book.model.js')(sequelize, Sequelize);
 db.reviews = require('./review.model.js')(sequelize, Sequelize);
 db.role = require('./role.model.js')(sequelize, Sequelize);
 db.user = require('./user.model.js')(sequelize, Sequelize);
+db.log = require('./log.model.js')(sequelize, Sequelize);
 
 // associations
 db.books.hasMany(db.reviews, {

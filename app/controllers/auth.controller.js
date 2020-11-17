@@ -2,7 +2,7 @@ const db = require('../models/index');
 const config = require('../config/auth.config');
 const User = db.user;
 const Role = db.role;
-
+const Log = db.log;
 const Op = db.Sequelize.Op;
 
 var jwt = require('jsonwebtoken');
@@ -34,8 +34,19 @@ exports.signup = (req, res) => {
                     res.send({ message: 'User was registered successfully!' });
                 });
             }
+            // Log to database
+            Log.create({
+                endpoint: '/auth/signup',
+                requestType: 'POST',
+                responseCode: 200,
+            });
         })
         .catch((err) => {
+            Log.create({
+                endpoint: '/auth/signup',
+                requestType: 'POST',
+                responseCode: 500,
+            });
             res.status(500).send({ message: err.message });
         });
 };
@@ -77,8 +88,18 @@ exports.signin = (req, res) => {
                     accessToken: token,
                 });
             });
+            Log.create({
+                endpoint: '/auth/signin',
+                requestType: 'POST',
+                responseCode: 200,
+            });
         })
         .catch((err) => {
+            Log.create({
+                endpoint: '/auth/signin',
+                requestType: 'POST',
+                responseCode: 500,
+            });
             res.status(500).send({ message: err.message });
         });
 };
