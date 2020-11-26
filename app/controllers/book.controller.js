@@ -67,6 +67,24 @@ exports.findBookById = (req, res) => {
         });
 };
 
+// get reviews for a given book using Author and Title parameters
+exports.findBookByAuthorTitle = (req, res) => {
+    const s_author = req.params.author;
+    const s_title = req.params.title;
+
+    Book.findOne({author: s_author, title: s_title}, { include: ['reviews'] })
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message ||
+                    'Some error occurred while finding reviews the book.',
+            });
+        });
+};
+
 // update book by id
 exports.updateBookById = (req, res) => {
     const asin = String(req.params.asin);
